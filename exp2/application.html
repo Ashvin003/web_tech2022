@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            table, th, td 
+            {
+                border: 1px solid;
+                text-align: center;
+            }
+        </style>
+    </head>
+    <body>
+        <h2>Submit Your Resume</h2>
+
+        <form action="submit.php" method="get">
+            <fieldset>
+                <legend>Personal Details</legend>
+                <label>
+                    First Name &nbsp;&nbsp;&nbsp; :
+                    <input type="text" required autofocus placeholder="First Name">
+                </label>
+                <br><br>
+                <label>
+                    Middle Name :
+                    <input type="text">
+                </label>
+                <br><br>
+                <label>
+                    Last Name&nbsp;&nbsp;&nbsp;&nbsp; :
+                    <input type="text">
+                </label>
+                <br><br>
+                <label>
+                    Date of Birth&nbsp; :
+                    <input type="date">
+                </label>
+                <br><br>
+                <label>
+                    Age&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; :
+                    <input type="number" min="18" max="30">
+                </label>
+                <br>
+            </fieldset>
+
+            <br>
+            <label>
+                <input  style="vertical-align: middle;" type="range" min="0" max="100">
+                <span>
+                    0%
+                </span>
+            </label>
+            <br><br>
+
+            <fieldset>
+                <legend>Address Details</legend>
+                <label>
+                    Address&nbsp;&nbsp;&nbsp; : 
+                    <textarea style="vertical-align: top;" rows="6" cols="50"></textarea>
+                </label>
+                <br><br>
+                <label>
+                    City/Town :
+                    <input type="text">
+                </label>
+                <br><br>
+                <label>
+                    State&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; :
+                    <input type="text" list="states">
+                    <datalist id="states">
+                        <option value="Shakleton Crater">
+                        <option value="Jamestown Base">
+                        <option value="Zveda Module">
+                        <option value="ISS">
+                        <option value="Happy Valley">
+                      </datalist>
+                </label>
+                <br><br>
+                <label>
+                    Zip Code&nbsp;&nbsp; :
+                    <input type="text" maxlength="6">
+                </label>
+                <br><br>
+            </fieldset>
+
+            <br>
+            <label>
+                <input  style="vertical-align: middle;" type="range" min="0" max="100">
+                <span>
+                    0%
+                </span>
+            </label>
+            <br><br>
+
+            <fieldset>
+                <legend>Contact Information</legend>
+                <label>
+                    Telephone :
+                    <input type="tel" pattern="\(044\) [0-9][0-9][0-9]\-[0-9][0-9][0-9][0-9]">
+                </label>
+                <br><br>
+                <label>
+                    Mobile&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; :
+                    <input type="tel" maxlength="10">
+                </label>
+                <br><br>
+                <label>
+                    Email&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; :
+                    <input type="email">
+                </label>
+                <br><br>
+                <label>
+                    Website&nbsp;&nbsp;&nbsp; :
+                    <input type="url">
+                </label>
+                <br><br>
+            </fieldset>
+
+            <br>
+            <label>
+                <input  style="vertical-align: middle;" type="range" min="0" max="100">
+                <span>
+                    0%
+                </span>
+            </label>
+            <br><br>
+
+
+            <fieldset>
+                <legend>Educational Qualification</legend>
+                <table style="width:100%">
+                    <tr>
+                        <th>Qualification</th>
+                        <th>Board/University</th>
+                        <th>Country</th>
+                        <th>Starting Year</th>
+                        <th>Ending Year</th>
+                        <th>Percentage</th>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label>
+                                10th&nbsp;&nbsp;&nbsp;&nbsp;
+                                <input type="checkbox">
+                            </label>
+                        </td>
+                        <td>
+                            <input type="text" style="width: 90%;">
+                        </td>
+                        <td>
+                            <select name="cntry">
+                                <option value="0">Earth</option>
+                                <option value="1">Moon</option>
+                                <option value="2">Mars</option>
+                                <option value="3" selected>Enceladus</option>
+                            </select>
+                        </td>
+                        <td>
+                            <input type="date">
+                        </td>
+                        <td>
+                            <input type="date">
+                        </td>
+                        <td>
+                            <input type="number" min="0">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label>
+                                12th&nbsp;&nbsp;&nbsp;&nbsp;
+                                <input type="checkbox">
+                            </label>
+                        </td>
+                        <td>
+                            <input type="text" style="width: 90%;">
+                        </td>
+                        <td>
+                            <select name="cntry">
+                                <option value="0">Earth</option>
+                                <option value="1">Moon</option>
+                                <option value="2">Mars</option>
+                                <option value="3" selected>Enceladus</option>
+                            </select>
+                        </td>
+                        <td>
+                            <input type="date">
+                        </td>
+                        <td>
+                            <input type="date">
+                        </td>
+                        <td>
+                            <input type="number" min="0">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label>
+                                B.Tech&nbsp;
+                                <input type="checkbox">
+                            </label>
+                        </td>
+                        <td>
+                            <input type="text" style="width: 90%;">
+                        </td>
+                        <td>
+                            <select name="cntry">
+                                <option value="0">Earth</option>
+                                <option value="1">Moon</option>
+                                <option value="2">Mars</option>
+                                <option value="3" selected>Enceladus</option>
+                            </select>
+                        </td>
+                        <td>
+                            <input type="date">
+                        </td>
+                        <td>
+                            <input type="date">
+                        </td>
+                        <td>
+                            <input type="number" min="0">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label>
+                                M.Tech
+                                <input type="checkbox">
+                            </label>
+                            <td>
+                                <input type="text" style="width: 90%;">
+                            </td>
+                            <td>
+                                <select name="cntry">
+                                    <option value="0">Earth</option>
+                                    <option value="1">Moon</option>
+                                    <option value="2">Mars</option>
+                                    <option value="3" selected>Enceladus</option>
+                                </select>
+                            </td>
+                            <td>
+                                <input type="date">
+                            </td>
+                            <td>
+                                <input type="date">
+                            </td>
+                            <td>
+                                <input type="number" min="0">
+                            </td>
+                        </td>
+                    </tr>
+                </table>
+            </fieldset>
+
+
+            <br>
+            <label>
+                <input  style="vertical-align: middle;" type="range" min="0" max="100">
+                <span>
+                    0%
+                </span>
+            </label>
+            <br><br>
+
+            <table style="border: 1px solid;text-align: left;">
+                <tr>
+                    <td style="border: 0px;">
+                        <label>
+                            Attach your resume in pdf format &nbsp;&nbsp;&nbsp;
+                            <input type="file" accept=".pdf,.doc">
+                        </label>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="border: 0px;text-align: left;">
+                        <label>
+                            <input type="checkbox">
+                            I have filled all the details
+                        </label>
+                    </td>
+                </tr>
+                
+            </table>
+
+            <br>
+            <label>
+                <input  style="vertical-align: middle;" type="range" min="0" max="100">
+                <span>
+                    0%
+                </span>
+            </label>
+            <br><br>
+
+            <center>
+                <input type="submit">
+            </center>
+
+        </form>
+
+        <br><br><br>
+
+    </body>
+</html>

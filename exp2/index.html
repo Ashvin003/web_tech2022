@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Infinity Space</title>
+    <style>
+        .flex-container {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Responsive layout - makes a one column layout instead of a two-column layout */
+        @media (max-width: 900px) {
+            .flex-container {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+
+<body style="background-color: black;color: white;background-image: url('https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fpbs.twimg.com%2Fmedia%2FDqM8E6iXcAI5peK.jpg%3Alarge&f=1&nofb=1');background-position: center center; background-size: cover;background-repeat: no-repeat;background-attachment: fixed;">
+    <header style="text-align: center;">
+        <img src="infinity.png" width="200px" style="vertical-align: middle;"><span
+            style="vertical-align: middle;font-size: xx-large;"> Infinity Space</span>
+    </header>
+    <hr>
+    <div style="text-align: left;">
+        <a href="#">Gallery</a>&nbsp;&nbsp;|&nbsp;&nbsp;
+        <a href="#">Missions</a>&nbsp;&nbsp;|&nbsp;&nbsp;
+        <a href="#">Corporate Partners</a>&nbsp;&nbsp;|&nbsp;&nbsp;
+        <a href="#">Careers</a>
+    </div>
+    <hr>
+    <div style="vertical-align: middle;" class="flex-container">
+
+        <video controls autoplay muted style="padding: 40px;width: 100%;align-items: center;vertical-align:middle;border-radius: 10px;">
+            <source src="starship.mp4" type="video/mp4">
+            Oops! Your browser doesn't support videos
+        </video>
+        <div style="padding: 60px;width: 100%; text-align: center;vertical-align: middle;">
+            <table>
+                <tr><td>
+                        We choose to go to the Moon. We choose to go to the Moon in this decade and do the other things, not because
+                        they are easy, but because they are hard, because that goal will serve to organise and measure the best of
+                        our energies and skills, because that challenge is one that we are willing to accept, one we are unwilling
+                        to postpone, and one which we intend to win, and the others, too.
+                </td></tr>
+                <tr><td>
+                    <audio autoplay controls loop style="margin-top: 40px;"><source src="moon_speech.mp3"></source></audio>
+                </td></tr>
+            </table>
+        </div>
+        
+    </div>
+
+    <hr>
+
+    <footer>
+        <center>
+            <table>
+                <tr>
+                    <td style="padding-right: 60px;">
+                        <form action="application.html">
+                            <fieldset>
+                                <legend>Sign Up</legend>
+        
+                                <label>
+                                    Username
+                                    <input type="text">
+                                </label>
+        
+                                <Br><Br>
+        
+                                <label>
+                                    Password&nbsp;
+                                    <input type="text" >
+                                </label>
+                                
+                                <br> <br>
+    
+                                <center><input type="submit"></center>
+        
+                            </fieldset>
+                        </form>
+                    </td>
+                    <td>
+                            <table >
+                                <tr >
+                                    <td>
+                                        15/13 Avenue <br>
+                                        Jamestown Colony <br>
+                                        Shakleton Crater <br>
+                                        Moon <br>
+                                    </td>
+                                    <td>
+                                        <iframe width="600" style="height: 200px;width: 500px;" src="https://maps.google.com/maps?q=2880%20Broadway,%20New%20York&t=&z=13&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe>
+                                    </td>
+                                </tr>
+                            </table>
+                    </td>
+                </tr>
+            </table>
+        </center>
+    </footer>
+    
+
+</body>
+
+</html>
