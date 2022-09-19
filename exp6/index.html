@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>EXP6</title>
+        <style>
+            body
+            {
+                font-family: monospace;
+            }
+        </style>
+    </head>
+    <body>
+        <!--Digital Clock-->
+        <fieldset>
+            <legend>Digital Clock</legend>
+            <br>
+            <div style="text-align: center;">
+                <span id="hrs">0</span> HRS <span id="mins">0</span> MINS <span id="secs">0</span> SECS
+            </div>
+            <br>
+            <br>
+        </fieldset>
+        <br>
+
+        <!--BG Color Change-->
+        <fieldset>
+            <legend>BG Color Change</legend>
+            <div id="bg_color" style="width: 90%;height:300px;padding: 10px;">
+
+            </div>
+        </fieldset>
+        <br>
+
+        <!--Font Size-->
+        <fieldset>
+            <legend>Font Size</legend>
+            <p id="fnt_size" style="text-align:center; "><b> This font can change size </b></p>
+        </fieldset>
+        <br>
+
+        <!--Car-->
+        <fieldset>
+            <legend>Car</legend>
+            <div style="overflow-x: scroll;">
+                <img id="car" src="tesla.png" style="height: 90px;position: relative;">
+            </div>
+            <br>
+            <button id="cstart">Start / Forward</button>
+            <button id="creverse">Reverse</button>
+            <button id="cstop">Stop</button>
+            <button id="creset">Reset</button>
+        </fieldset>
+        <br>
+
+        <!--Array of Students-->
+        <fieldset>
+            <legend>Student Data</legend>
+            <br>
+            <button id="st_reveal">Student Reveal</button>
+            <div id="st_data" style="padding: 10px;">
+
+            </div>
+            <br>
+        </fieldset>
+
+        <script>
+            // Clock
+            setInterval(()=>{
+                let date = new Date();
+                document.getElementById("hrs").innerText = date.getHours();
+                document.getElementById("mins").innerText = date.getMinutes();
+                document.getElementById("secs").innerText = date.getSeconds();    
+            },1000);
+
+
+            //BG Color Change
+            setInterval(()=>{
+                let r = Math.floor(Math.random()*255);
+                let g = Math.floor(Math.random()*255);
+                let b = Math.floor(Math.random()*255);
+                
+                document.getElementById("bg_color").style.backgroundColor = `rgb(${r},${g},${b})`;
+
+            },3000);
+
+            //Font Size 
+            let text_element = document.getElementById("fnt_size");
+
+            text_element.onmouseenter = () => { text_element.style.fontSize = "30px"};
+            text_element.onmouseleave = () => { text_element.style.fontSize = "15px"};
+
+            //Car
+            let pos = 0;
+            let started = false;
+            let reverse = false;
+            let speed = 1;
+
+            let car = document.getElementById("car");
+
+            document.getElementById("cstart").onclick = ()=>{started = true;reverse=false;};
+            document.getElementById("cstop").onclick = ()=>{started = false};
+            document.getElementById("creverse").onclick = ()=>{reverse = true;started=true};
+            document.getElementById("creset").onclick = ()=>{started = false;reverse=false;pos=0;car.style.left = `${pos}px`;};
+
+
+            setInterval(()=>{
+                if(started)
+                {
+                    if(reverse)
+                    {
+                        if((pos-speed)>0)
+                        {
+                            pos -= speed;
+                        }
+                    }
+                    else
+                    {
+                        pos += speed;
+                    }
+                    car.style.left = `${pos}px`;
+                }
+            },1);
+
+            //Student Data
+
+            let st_data = [
+                {
+                    "name":"John",
+                    "r_no":"123",
+                    "_dob":"12/12/2023"
+                },
+                {
+                    "name":"Pohn",
+                    "r_no":"124",
+                    "_dob":"12/12/1998"
+                },
+                {
+                    "name":"Jahn",
+                    "r_no":"125",
+                    "_dob":"12/12/1997"
+                },
+                {
+                    "name":"Doe",
+                    "r_no":"126",
+                    "_dob":"12/12/2001"
+                },
+                {
+                    "name":"Boe",
+                    "r_no":"127",
+                    "_dob":"12/12/2013"
+                },
+            ];
+            
+            let msg = "";
+            for(let i = 0; i < st_data.length; i++)
+            {
+                msg += `Name :${st_data[i].name}\nR_No :${st_data[i].r_no}\nDOB_ :${st_data[i]._dob}\n\nBefore 2000 : ${new Date(st_data[i]._dob).getFullYear() < 2000}\n\n\n`;
+            }
+            
+            document.getElementById("st_reveal").onclick = () => { document.getElementById("st_data").innerText = msg; }
+
+        </script>
+    </body>
+</html>
