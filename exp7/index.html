@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>EXP7</title>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+        <style>
+            html,body
+            {
+                height: 100%;
+            }
+            #ques_a
+            {
+                width: 100%;
+                height: 90%;
+                position: relative;
+                background-image: url('ques_a_bg.png');
+                background-repeat: no-repeat;
+                background-size: cover;
+            }
+            #ques_a img
+            {
+                width: 100px;
+                position: relative;
+                top: "50px";
+                left: "50px";
+            }
+            #ques_b ol
+            {
+                width: 100%;
+                height: 100px;
+                overflow: scroll;
+            }
+            #button_arena
+            {
+                padding: 10px;
+            }
+            #button_arena button
+            {
+                margin: 5px;
+            }            
+            .circle 
+            {
+                height: 50px;
+                width: 50px;
+                background-color: #555;
+                border-radius: 50%;
+                display:inline-block;
+            }
+
+            .trapezoid 
+            {
+	            border-bottom: 50px solid #555;
+	            border-left: 25px solid transparent;
+	            border-right: 25px solid transparent;
+	            height: 0;
+	            width: 175px;
+            }
+
+            .rectangle 
+            {
+            height: 50px;
+            width: 300px;
+            background-color: #555;
+            }
+
+        </style>
+        <script>
+            $(document).ready(()=>{
+
+                //ques a
+                let plane       = $("#plane");
+                let keys_active = false;
+                let arrow       = {left: 37, up: 38, right: 39, down: 40 };
+                let css_left    = 50;
+                let css_top     = 50;
+
+                $("#ques_a").mouseover (()=>{ keys_active = true ; $('html, body').css({ overflow: 'hidden'}); });
+                $("#ques_a").mouseleave(()=>{ keys_active = false; $('html, body').css({ overflow: 'scroll'}); });
+
+                $(document).keydown((event)=>{
+
+                    if(keys_active)
+                    {
+                        switch(event.which)
+                        {
+                            case arrow.right:   plane.css('transform','rotate(90deg)');
+                                                css_left+=5;
+                                                plane.css('left',`${css_left}px`);
+                                                break;
+                            case arrow.left:    plane.css('transform','rotate(270deg)');
+                                                css_left-=5;
+                                                plane.css('left',`${css_left}px`);
+                                                break;
+                            case arrow.up:      plane.css('transform','rotate(0deg)');
+                                                css_top-=5;
+                                                plane.css('top',`${css_top}px`);
+                                                break;
+                            case arrow.down:    plane.css('transform','rotate(180deg)');
+                                                css_top+=5;
+                                                plane.css('top',`${css_top}px`);
+                                                break;
+                        }
+                    }
+
+                });
+
+                //ques b
+
+                let text_box = $("#val_in");
+                let list     = $("#added_vals");
+                
+                let butt_count = 0;
+
+                $("#val_in_butt").click(()=>{
+                    
+                    list.append(`<li>${text_box.val()}</li>`);
+                    text_box.val("");
+
+                });
+
+                $("#add_butt").click(()=>{
+
+                    $("#button_arena").append(`<button>${butt_count+=1}</button>`);
+                });
+
+                $("#get_res").click(()=>{
+                    list.children().appendTo("#traverse_res");
+                });
+
+                //ques c
+                $("#quesc_apply").click(()=>{
+                    $(".trapezoid").css("border-bottom",`50px solid ${$("#gcol").val()}`);
+                    $(".rectangle").css("background-color",$("#bcol").val());
+                    $(".circle").css("width",$("#tsize").val());
+                    $(".circle").css("height",$("#tsize").val());
+                });
+                
+
+
+            });
+        </script>
+    </head>
+    <body>
+
+        <h3><b>Ques A</b></h3>
+        <div id="ques_a">
+            <img src="plane.png" id="plane">
+        </div>
+        <hr>
+        <h3><b>Ques B</b></h3>
+        <div id="ques_b">
+            <input id="val_in"> <button id="val_in_butt">Input Value</button>
+
+            <br><br>
+            Added values:<br>
+            <ol id="added_vals"></ol>
+            <br><br>
+
+            Add Buttons;
+
+            <div id="button_arena">
+                <button id="add_butt">Add More</button><br><br>
+            </div>
+
+            <fieldset>
+                <legend>Result</legend>
+                <button id="get_res">Get Results</button>
+                <p>Appended Values:</p>
+                <ul id="traverse_res"></ul>
+            </fieldset>
+
+        </div>
+        <br>
+        <hr>
+        <h3><b>Ques C</b></h3>
+        <div id="ques_c">            
+            <div class="trapezoid "></div>
+            <div class="rectangle"></div>
+            <div>
+                <div class="circle"></div> <span
+                    style="width:200px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                </span>
+                <div class="circle"></div>
+                <br><br>
+                <div style="padding: 20px;">
+                    Glass Color: 
+                    <input id="gcol" type="color">
+                    Body Color: 
+                    <input id="bcol" type="color">
+                    Tire Size: 
+                    <input id="tsize" type="number">
+                    <button id="quesc_apply">Apply</button>
+                </div>
+        </div>
+    </body>
+</html>
