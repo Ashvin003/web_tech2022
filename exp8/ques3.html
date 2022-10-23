@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>EXP8 - QUES3</title>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+    </head>
+    <body ng-app="app" ng-controller="controller">
+        <p>Add Item : <input type="text" ng-model="data"><button ng-click="add()">Add</button></p>
+        <h4>TODO</h4>
+        <ul>
+            <li ng-repeat="task in tasks">{{task}}</li>
+        </ul>
+    </body>
+    <script>
+        let app = angular.module("app", []); 
+        app.controller("controller",($scope)=>{
+            $scope.tasks = ["wakeup","exam"];
+            $scope.add   = () => {
+                $scope.tasks.push($scope.data);
+                $scope.data = '';
+            };
+        });
+    </script>
+</html>

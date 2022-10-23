@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>EXP8 - QUES1</title>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+    </head>
+    <body ng-app="app" ng-controller="controller"> 
+        <div id='dvl'> 
+                Post your Comment 
+                <form> 
+                    <textarea ng-model="txtcomment" placeholder="Your Comment" style='width:550px'></textarea> 
+                    <button ng-click="btn_add();" style='margin-top:10px;'>Post Comment</button> 
+                    <h4>Comments</h4> 
+                    <ul> 
+                        <li ng-repeat="comment in comments">{{comment}}</li> <a style="float: right;" href="" ng-click="remItem($index)">x</a>
+                    </ul> 
+                </form> 
+        </div> 
+
+        <script type="text/javascript">
+        let app = angular.module("app", []); 
+        app.controller("controller",($scope)=>{
+            $scope.comments = []; 
+            $scope.btn_add = ()=>{ 
+                if($scope.txtcomment !='')
+                    { 
+                        $scope.comments.push($scope.txtcomment); 
+                        $scope.txtcomment = "";
+                    }
+                }
+            $scope.remItem = ($index) => {
+                $scope.comment.splice($index, 1); 
+            }
+        });
+        </script> 
+    </body>
+</html>

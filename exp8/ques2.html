@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>EXP8 - QUES2</title>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+    </head>
+    <body ng-app="app" ng-controller="controller">
+        <p>Number 1: <input type="number" ng-model="a"></p>
+        <p>Number 2: <input type="number" ng-model="b"></p>
+        <div style="padding-left: 100px;">
+            <select ng-model="op">
+                <option>+</option>
+                <option>-</option>
+                <option>x</option>
+                <option>/</option>
+            </select>
+        </div>
+        <p>Result : &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{r()}}</p>
+    </body>
+    <script>
+        let app = angular.module("app", []); 
+        app.controller("controller",($scope)=>{
+            $scope.r = ()=>{
+                switch($scope.op)
+                {
+                    case '+': return $scope.a + $scope.b;
+                    case '-': return $scope.a - $scope.b;
+                    case 'x': return $scope.a * $scope.b;
+                    case '/': return $scope.a / $scope.b;
+                }
+            }
+        });
+    </script>
+</html>
