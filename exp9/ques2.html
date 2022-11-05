@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Ques 2</title>
+        <script src="angular.min.js"></script>
+        <script src="angular-route.js"></script>
+    </head>
+    <body ng-app="app">
+        <h1 style="text-align: center;">Experiments Demo</h1>
+        <hr>
+        <div style="text-align: center;">
+            <span><a href="#!exp4">Exp4</a></span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <span><a href="#!exp5">Exp5</a></span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <span><a href="#!exp6">Exp6</a></span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <span><a href="#!exp7">Exp7</a></span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        </div>
+        <hr>
+        <div ng-view></div>
+    </body>
+    <script>
+        let app = angular.module("app", ["ngRoute"]);
+        app.config(($routeProvider) => {
+            $routeProvider
+            .when("/exp4", {
+                templateUrl : "/past_exps/EXP4/index.html"
+            })
+            .when("/exp5", {
+                templateUrl : "/past_exps/EXP5/index.html"
+            })
+            .when("/exp6", {
+                templateUrl : "/past_exps/EXP6/index.html"
+            })
+            .when("/exp7", {
+                templateUrl : "/past_exps/EXP7/index.html"
+            });
+        });
+    </script>
+</html>

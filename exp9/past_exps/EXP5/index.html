@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>EXP5</title>
+        <style>
+            body
+            {
+                font-family: monospace;
+            }
+        </style>
+    </head>
+    <body>
+        <fieldset>
+            <legend>Shortest and Longest Word</legend>
+            <label for="slword">Input text</label>
+            <input type="text" id="slword">
+
+            <button id="slbutton">
+                Submit
+            </button>
+
+            <p>Longest word  : <span id="longest_word"></span> </p>
+            <p>Smallest word : <span id="smallest_word"></span> </p>
+
+        </fieldset>
+        <br>
+        <fieldset>
+            <legend>BMI Calculator</legend>
+            Weight (kg): 
+            <input type="number" id="bmi_wght" min="0"><br><br>
+            Height ( m):
+            <input type="number" id="bmi_hght" min="0"><br><br>
+
+            <button id="bmi_butt">
+                Calculate BMI
+            </button>
+            
+            <p>Your BMI : <span id="bmi_val">0</span> (<span id="bmi_stat">_</span>) </p>
+
+        </fieldset>
+        <br>
+        <fieldset>
+            <legend>Fruit Farm</legend>
+            Rows : <input type="number" id="ff_rows" min="0"> <br><br>
+            Cols : <input type="number" id="ff_cols" min="0"> <br><br> 
+            <button id="ff_plant"> Plant Garden</button> &nbsp;&nbsp;
+            <button id="ff_grow"> Grow </button>
+            <br><br>
+            <div id="ff_garden" style="width:100%;height: 500px;overflow: scroll;background-color: #AADB1E;">
+
+            </div>
+        </fieldset>
+        <fieldset>
+            <legend>Currency Convert</legend>
+            <br>
+            From:
+            <select id="cc_typ1" name="cc_typ1">
+                <option val="0">INR</option>
+                <option val="1">USD</option>
+            </select>
+            <input type="number" id="cc_val1"> <br><br>
+            To &nbsp;&nbsp;&nbsp;:
+            <select id="cc_typ2" name="cc_typ2">
+                <option val="0">INR</option>
+                <option val="1" selected>USD</option>
+            </select>
+            <input type="number" id="cc_val2"> <br><br>
+            <button id="cc_convert">Convert</button>
+        </fieldset>
+        <fieldset>
+            <legend>Coin Flip</legend>
+            <img src="tail.gif" id="cf_coin"><br>
+            <p>Heads Total : <span id="hd_count">0</span> </p>
+            <p>Tails Total : <span id="tl_count">0</span> </p>
+        </fieldset>
+        <fieldset>
+            <legend>Cake Order Form</legend><br>
+            Number 1/2 kg cakes : <input type="number" id="sm_cake" min="0" value="0">        <br><br>
+            Number 1 kg cakes &nbsp&nbsp: <input type="number" id="md_cake" min="0" value="0"><br><br>
+            Number 2 kg cakes &nbsp&nbsp: <input type="number" id="lg_cake" min="0" value="0"><br><br>
+
+            Tip:
+            <label><input type="radio" name="tip" value="10">10%</label>
+            <label><input type="radio" name="tip" value="15">15%</label>
+            <label><input type="radio" name="tip" value="20">20%</label>
+            <label><input type="radio" name="tip" value="0">None</label>
+            <br><br>
+            <button id="cake_calc">
+                Calculate Order
+            </button>
+            <br>
+        </fieldset>
+        
+        <script>
+            //Shortest and Longest
+            let sl_button = document.getElementById("slbutton");
+            sl_button.onclick = () => 
+                                    {
+                                        let sl_text  = document.getElementById("slword").value;
+
+                                        let longword = document.getElementById("longest_word");
+                                        let smolword = document.getElementById("smallest_word");
+                                        
+                                        let word_list = String(sl_text).trim().split(" ");
+
+                                        word_list = word_list.sort((a,b) => a.length - b.length);
+                                        
+                                        longword.innerText = word_list[0];
+                                        smolword.innerText = word_list[word_list.length-1];
+                                        
+                                    }
+            
+            // BMI Calc
+            let bmi_butt = document.getElementById("bmi_butt");
+            bmi_butt.onclick = () =>
+                                    {
+                                        let weight = Number(document.getElementById("bmi_wght").value);
+                                        let height = Number(document.getElementById("bmi_hght").value);
+
+                                        let bmi_val  = document.getElementById("bmi_val");
+                                        let bmi_stat = document.getElementById("bmi_stat");
+
+                                        let bmi = weight / (height * height);
+                                        
+                                        bmi_val.innerText = String(Math.round(bmi,2));
+
+                                        if(bmi < 18)
+                                        {
+                                            bmi_stat.innerText = "Undeweight";
+                                        }
+                                        else if(bmi <= 25)
+                                        {
+                                            bmi_stat.innerText = "Normal";
+                                        }
+                                        else if(bmi <= 30)
+                                        {
+                                            bmi_stat.innerText = "Overweight";
+                                        }
+                                        else
+                                        {
+                                            bmi_stat.innerText = "Obese";
+                                        }
+
+                                    }
+            
+            // Fruit Farm
+            let ff_plant = document.getElementById("ff_plant");
+            let ff_grow  = document.getElementById("ff_grow");
+            
+            let garden = document.getElementById("ff_garden");
+
+            ff_plant.onclick = () => 
+                                    {
+                                        rows = Number(document.getElementById("ff_rows").value);
+                                        cols = Number(document.getElementById("ff_cols").value);   
+
+                                        for(let i = 0; i < rows; i++)
+                                        {
+                                            for(let j = 0; j < cols; j++)
+                                            {
+                                                let img = document.createElement("img");
+                                                img.style.width = "50px";
+                                                img.style.height = "50px";
+                                                img.style.margin = "8px";
+                                                img.name = "saplings";
+                                                img.src = "sapling.png";
+                                                garden.appendChild(img);
+                                            }
+                                            garden.appendChild(document.createElement("br"));
+                                        }
+
+                                    }
+
+            ff_grow.onclick = () => 
+                                    {
+                                        let sapling_lst = document.getElementsByName("saplings");
+                                        let plant_count = sapling_lst.length;
+                                        if(plant_count <= 0)
+                                        {
+                                            alert("No Saplings in garden");
+                                            return;
+                                        }
+                                        
+                                        for(let i = 0; i < plant_count; i++)
+                                        {
+                                            let random = Math.random();
+
+                                            if(random < 0.5)
+                                            {
+                                                //Oranges
+                                                sapling_lst[i].src="orange.png";
+                                            }
+                                            else
+                                            {
+                                                //Apples
+                                                sapling_lst[i].src="apple.png";
+                                            }
+
+                                        }
+
+
+                                    }
+            //Currency Convert
+
+            let cc_val1 = document.getElementById("cc_val1");
+            let cc_val2 = document.getElementById("cc_val2");
+
+            let cc_convert = document.getElementById("cc_convert");
+            cc_convert.onclick = () =>
+                                    {
+                                        let cc_typ1 = document.getElementById("cc_typ1").value;
+                                        let cc_typ2 = document.getElementById("cc_typ2").value;
+                                        
+                                        if(cc_typ1 == "INR" && cc_typ2 == "USD")
+                                        {
+                                            //INR to USD
+                                            cc_val2.value = Number(cc_val1.value) * 0.015;
+                                        }
+                                        else if(cc_typ1 == "USD" && cc_typ2 == "INR")
+                                        {
+                                            cc_val2.value = Number(cc_val1.value) * 67.12;
+                                        }
+                                        else
+                                        {
+                                            alert('Identical Units Selected');
+                                            return;
+                                        }
+                                    }
+            
+            //Coin Flip
+            
+            let coin = document.getElementById("cf_coin");
+            let head = document.getElementById("hd_count");
+            let tail = document.getElementById("tl_count");
+
+            let head_count = 0;
+            let tail_count = 0;
+
+            coin.onclick = () =>
+                                    {
+                                        let prob = Math.random();
+                                        if(prob < 0.5)
+                                        {
+                                            head_count += 1;
+                                            coin.src = "head.gif";
+                                            head.innerText = head_count;
+                                        }
+                                        else
+                                        {
+                                            tail_count += 1;
+                                            coin.src = "tail.gif";
+                                            tail.innerText = tail_count;
+                                        }
+                                    }
+            //Cake Orders
+            let cake_calc = document.getElementById("cake_calc");
+            cake_calc.onclick = () =>
+                                    {
+                                        let sm_count = Number(document.getElementById("sm_cake").value);
+                                        let md_count = Number(document.getElementById("md_cake").value);
+                                        let lg_count = Number(document.getElementById("lg_cake").value);
+
+                                        let net_amt = sm_count * 100 + md_count * 200 + lg_count * 400;
+                                        let tip_percent = 0;
+
+                                        tips = document.getElementsByName("tip");
+                                        for(let i = 0; i < tips.length; i++)
+                                        {
+                                            if(tips[i].checked)
+                                            {
+                                                tip_percent = Number(tips[i].value);
+                                                break
+                                            }
+                                        }
+
+                                        let total_amount = net_amt + net_amt * tip_percent/100;
+                                        
+                                        let msg = "Total Bill \n\n "
+                                                + ` - 0.5 KG Cake ${sm_count} x 100 : ${sm_count*100} INR\n`
+                                                + ` - 1.0 KG Cake ${md_count} x 200 : ${md_count*200} INR\n`
+                                                + ` - 2.0 KG Cake ${lg_count} x 400 : ${lg_count*400} INR\n\n`
+                                                + `TIP : ${net_amt * tip_percent/100} INR\n\n`
+                                                + `NET TOTAL : ${total_amount} INR`;
+                                        
+                                        alert(msg);
+                                        
+
+                                    }
+
+        </script>
+
+    </body>
+</html>
